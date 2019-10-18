@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import axios from "axios";
+import {connect} from 'react-redux'
+import * as actionCreators from '../state/actionCreators'
+import ColorForm from './ColorForm';
+import './scss/ColorForm.scss';
 
 const initialColor = {
   color: "",
   code: { hex: "" }
 };
 
-const ColorList = ({ colors, updateColors }) => {
-  console.log(colors);
+const ColorList = ({ colors, removeColor, updateColors }) => {
+  // console.log(colors);
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
 
@@ -18,17 +22,22 @@ const ColorList = ({ colors, updateColors }) => {
 
   const saveEdit = e => {
     e.preventDefault();
+    updateColors(colorToEdit)
+    setEditing(false)
     // Make a put request to save your updated color
     // think about where will you get the id from...
     // where is is saved right now?
   };
 
   const deleteColor = color => {
+    removeColor(color)
+    setEditing(false)
     // make a delete request to delete this color
   };
 
   return (
     <div className="colors-wrap">
+      <ColorForm />
       <p>colors</p>
       <ul>
         {colors.map(color => (
@@ -78,8 +87,12 @@ const ColorList = ({ colors, updateColors }) => {
       )}
       <div className="spacer" />
       {/* stretch - build another form here to add a color */}
+      
     </div>
   );
 };
 
-export default ColorList;
+export default connect(
+  state => state,
+  actionCreators
+)(ColorList);
