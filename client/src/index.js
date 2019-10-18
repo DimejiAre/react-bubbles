@@ -8,7 +8,8 @@ import App from "./App";
 
 const rootReducer = combineReducers({
     colors: reducers.colorsReducer,
-    loginForm: reducers.loginFormReducer
+    loginForm: reducers.loginFormReducer,
+    colorForm: reducers.colorFormReducer
 })
 
 const store = createStore(rootReducer,

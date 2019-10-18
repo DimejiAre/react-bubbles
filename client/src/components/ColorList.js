@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import {connect} from 'react-redux'
 import * as actionCreators from '../state/actionCreators'
+import ColorForm from './ColorForm';
 
 const initialColor = {
   color: "",
@@ -84,6 +85,7 @@ const ColorList = ({ colors, removeColor, updateColors }) => {
       )}
       <div className="spacer" />
       {/* stretch - build another form here to add a color */}
+      <ColorForm />
     </div>
   );
 };

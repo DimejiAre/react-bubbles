@@ -14,6 +14,16 @@ export const inputChange = (event) => {
     }
 }
 
+export const colorChange = (event) => {
+    return {
+        type: types.ON_COLOR_FORM_CHANGE,
+        payload: {
+            key: event.target.name,
+            value: event.target.value
+        }
+    }
+}
+
 export const login = (loginForm,history) => dispatch => {
     axios.post(colorsApiUrl + '/login', loginForm)
     .then(res => {
@@ -62,4 +72,8 @@ export const removeColor = color => dispatch => {
     .catch(error => {
         alert(error.message)
     })
+}
+
+export const postColor = color => dispatch => {
+    return null
 }
