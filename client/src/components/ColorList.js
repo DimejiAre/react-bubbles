@@ -30,8 +30,7 @@ const ColorList = ({ colors, removeColor, updateColors }) => {
   };
 
   const deleteColor = color => {
-    removeColor(color)
-    setEditing(false)
+    removeColor(color,setEditing)
     // make a delete request to delete this color
   };
 

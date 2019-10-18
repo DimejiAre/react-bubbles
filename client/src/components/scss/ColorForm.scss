@@ -1,9 +1,11 @@
 .color-form {
+    margin-top: 0;
     padding: 20px;
     border-bottom: 1px solid plum;
 
     label {
         margin: 0 10px;
+        padding: 0;
     }
 
     h4 {
@@ -16,6 +18,7 @@
         border-radius: 20px;
         width: 15vw;
         text-indent: 10px;
+        margin-bottom: 15px;
     }
 
     button {

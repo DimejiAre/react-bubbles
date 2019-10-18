@@ -54,7 +54,6 @@ export const getColors = () => dispatch => {
 }
 
 export const updateColors = color => dispatch => {
-    debugger
     axiosWithAuth().put(colorsApiUrl + '/colors/' + color.id, color)
     .then(res => {
         dispatch(getColors(res.data))
@@ -64,9 +63,10 @@ export const updateColors = color => dispatch => {
     })   
 }
 
-export const removeColor = color => dispatch => {
+export const removeColor = (color,setEditing) => dispatch => {
     axiosWithAuth().delete(colorsApiUrl + '/colors/' + color.id, color)
     .then(res => {
+        setEditing(false)
         dispatch(getColors(res.data))
     })
     .catch(error => {
@@ -75,7 +75,6 @@ export const removeColor = color => dispatch => {
 }
 
 export const postColor = color => dispatch => {
-    debugger
     const params = {
         color: color.color,
         code: {
