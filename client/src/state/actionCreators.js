@@ -1,7 +1,8 @@
 import * as types from './actionTypes';
 import axios from 'axios';
+import axiosWithAuth from '../axios';
 
-const colorsApiUrl = 'http://localhost:5000/api/login'
+const colorsApiUrl = 'http://localhost:5000/api'
 
 export const inputChange = (event) => {
     return {
@@ -14,11 +15,29 @@ export const inputChange = (event) => {
 }
 
 export const login = (loginForm,history) => dispatch => {
-    axios.post(colorsApiUrl, loginForm)
+    axios.post(colorsApiUrl + '/login', loginForm)
     .then(res => {
         localStorage.setItem('token', res.data.payload)
-        history.push('/colors')
+        history.push('/bubbles')
         dispatch({type: types.ON_SUBMIT})
+    })
+    .catch(error => {
+        alert(error.response.data)
+    })
+}
+
+export const addColors = colors => {
+    return {
+        type: types.ADD_COLORS,
+        payload: colors
+    }
+}
+
+export const getColors = () => dispatch => {
+    axiosWithAuth().get(colorsApiUrl + '/colors')
+    .then(res => {
+        debugger
+        dispatch(addColors(res.data))
     })
     .catch(error => {
         alert(error.response.data)

@@ -9,6 +9,8 @@ const initialColors = []
 
 export const colorsReducer = (state=initialColors, action) => {
     switch(action.type){
+        case types.ADD_COLORS:
+            return action.payload
         default:
         return state;
     }
