@@ -3,6 +3,7 @@ import axios from "axios";
 import {connect} from 'react-redux'
 import * as actionCreators from '../state/actionCreators'
 import ColorForm from './ColorForm';
+import './scss/ColorForm.scss';
 
 const initialColor = {
   color: "",
@@ -36,6 +37,7 @@ const ColorList = ({ colors, removeColor, updateColors }) => {
 
   return (
     <div className="colors-wrap">
+      <ColorForm />
       <p>colors</p>
       <ul>
         {colors.map(color => (
@@ -85,7 +87,7 @@ const ColorList = ({ colors, removeColor, updateColors }) => {
       )}
       <div className="spacer" />
       {/* stretch - build another form here to add a color */}
-      <ColorForm />
+      
     </div>
   );
 };

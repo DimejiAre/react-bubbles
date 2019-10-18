@@ -10,7 +10,7 @@ function ColorForm(props){
         postColor(colorForm);
     }
     return (
-        <form>
+        <form className='color-form'>
         <label>Color</label>
         <input value={colorForm.color} onChange={colorChange} name='color' type='text'/>
         <label>hex code</label>

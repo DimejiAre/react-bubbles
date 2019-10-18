@@ -1,0 +1,33 @@
+.color-form {
+    padding: 20px;
+    border-bottom: 1px solid plum;
+
+    label {
+        margin: 0 10px;
+    }
+
+    h4 {
+        margin: 0;
+        margin-bottom: 10px;
+    }
+
+    input {
+        height: 20px;
+        border-radius: 20px;
+        width: 15vw;
+        text-indent: 10px;
+    }
+
+    button {
+        width: 10vw;
+        height: 25px;
+        text-align: center;
+        background-color: plum;
+        cursor: pointer;
+        border-radius: 20px;
+
+        &:hover {
+            color: white;
+        }
+    }
+}
