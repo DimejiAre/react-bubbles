@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { connect } from 'react-redux';
+import * as actionCreators from '../state/actionCreators';
 import { Pack } from "@potion/layout";
 import { Svg, Circle } from "@potion/element";
 
@@ -50,4 +52,7 @@ const Bubbles = ({ colors }) => {
   );
 };
 
-export default Bubbles;
+export default connect(
+  state => state,
+  actionCreators
+)(Bubbles);

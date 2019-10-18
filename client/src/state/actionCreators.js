@@ -36,7 +36,6 @@ export const addColors = colors => {
 export const getColors = () => dispatch => {
     axiosWithAuth().get(colorsApiUrl + '/colors')
     .then(res => {
-        debugger
         dispatch(addColors(res.data))
     })
     .catch(error => {

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import {connect} from 'react-redux'
+import * as actionCreators from '../state/actionCreators'
 
 const initialColor = {
   color: "",
@@ -7,7 +9,7 @@ const initialColor = {
 };
 
 const ColorList = ({ colors, updateColors }) => {
-  console.log(colors);
+  // console.log(colors);
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
 
@@ -82,4 +84,7 @@ const ColorList = ({ colors, updateColors }) => {
   );
 };
 
-export default ColorList;
+export default connect(
+  state => state,
+  actionCreators
+)(ColorList);
