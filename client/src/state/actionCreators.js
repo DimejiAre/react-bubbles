@@ -42,3 +42,24 @@ export const getColors = () => dispatch => {
         alert(error.response.data)
     })
 }
+
+export const updateColors = color => dispatch => {
+    debugger
+    axiosWithAuth().put(colorsApiUrl + '/colors/' + color.id, color)
+    .then(res => {
+        dispatch(getColors(res.data))
+    })
+    .catch(error => {
+        alert(error.message)
+    })   
+}
+
+export const removeColor = color => dispatch => {
+    axiosWithAuth().delete(colorsApiUrl + '/colors/' + color.id, color)
+    .then(res => {
+        dispatch(getColors(res.data))
+    })
+    .catch(error => {
+        alert(error.message)
+    })
+}
