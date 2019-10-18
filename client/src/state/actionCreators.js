@@ -75,5 +75,20 @@ export const removeColor = color => dispatch => {
 }
 
 export const postColor = color => dispatch => {
-    return null
+    debugger
+    const params = {
+        color: color.color,
+        code: {
+            hex: color.hex
+        }
+    }
+    axiosWithAuth().post(colorsApiUrl + '/colors', params)
+    .then(res => {
+        dispatch(getColors(res.data))
+        dispatch({type: types.ON_SUBMIT})
+    })
+    .catch(error => {
+        alert(error.message)
+        dispatch({type: types.ON_SUBMIT})
+    })
 }
