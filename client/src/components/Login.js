@@ -4,9 +4,7 @@ import * as actionCreators from '../state/actionCreators';
 import './scss/Login.scss';
 
 const Login = (props) => {
-  // make a post request to retrieve a token from the api
-  // when you have handled the token, navigate to the BubblePage route
-  const {inputChange, loginForm, login, history} = props;
+  const { inputChange, loginForm, login, history } = props;
 
   const submit = event => {
     event.preventDefault();
@@ -17,9 +15,9 @@ const Login = (props) => {
       <h1>Welcome to the Bubble App!</h1>
       <form className='login-form'>
         <label>Username</label>
-        <input value={loginForm.username} onChange={inputChange} name='username' type='text' placeholder='username'/>
+        <input value={loginForm.username} onChange={inputChange} name='username' type='text' placeholder='username' />
         <label>Password</label>
-        <input value={loginForm.password} onChange={inputChange} name='password' type='password' placeholder='password'/>
+        <input value={loginForm.password} onChange={inputChange} name='password' type='password' placeholder='password' />
         <button type='submit' onClick={submit}>Login</button>
       </form>
     </div>

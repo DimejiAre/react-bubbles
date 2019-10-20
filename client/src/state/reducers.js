@@ -12,17 +12,17 @@ const initialColorForm = {
     hex: ''
 }
 
-export const colorsReducer = (state=initialColors, action) => {
-    switch(action.type){
+export const colorsReducer = (state = initialColors, action) => {
+    switch (action.type) {
         case types.ADD_COLORS:
             return action.payload
         default:
-        return state;
+            return state;
     }
 }
 
-export const loginFormReducer = (state = initialLoginForm,action) => {
-    switch(action.type){
+export const loginFormReducer = (state = initialLoginForm, action) => {
+    switch (action.type) {
         case types.ON_LOGIN_FORM_CHANGE:
             return {
                 ...state, [action.payload.key]: action.payload.value
@@ -34,15 +34,15 @@ export const loginFormReducer = (state = initialLoginForm,action) => {
     }
 }
 
-export const colorFormReducer = (state=initialColorForm, action) => {
-    switch(action.type){
+export const colorFormReducer = (state = initialColorForm, action) => {
+    switch (action.type) {
         case types.ON_COLOR_FORM_CHANGE:
             return {
                 ...state, [action.payload.key]: action.payload.value
             }
         case types.ON_SUBMIT:
-                return initialColorForm;
+            return initialColorForm;
         default:
-        return state;
+            return state;
     }
 }

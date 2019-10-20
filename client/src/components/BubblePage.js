@@ -1,27 +1,22 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import {connect} from 'react-redux';
+import React, { useEffect } from "react";
+import { connect } from 'react-redux';
 import * as actionCreators from '../state/actionCreators';
 
 import Bubbles from "./Bubbles";
 import ColorList from "./ColorList";
 
 const BubblePage = (props) => {
-  const {getColors} = props;
-  const [colorList, setColorList] = useState([]);
-  // fetch your colors data from the server when the component mounts
-  // set that data to the colorList state property
+  const { getColors } = props;
 
   useEffect(() => {
     getColors()
-  },[])
+  }, [])
 
 
   return (
     <>
-      {/* <ColorList colors={colorList} updateColors={setColorList} /> */}
       <ColorList />
-      <Bubbles/>
+      <Bubbles />
     </>
   );
 };

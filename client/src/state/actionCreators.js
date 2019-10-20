@@ -24,16 +24,16 @@ export const colorChange = (event) => {
     }
 }
 
-export const login = (loginForm,history) => dispatch => {
+export const login = (loginForm, history) => dispatch => {
     axios.post(colorsApiUrl + '/login', loginForm)
-    .then(res => {
-        localStorage.setItem('token', res.data.payload)
-        history.push('/bubbles')
-        dispatch({type: types.ON_SUBMIT})
-    })
-    .catch(error => {
-        alert(error.response.data)
-    })
+        .then(res => {
+            localStorage.setItem('token', res.data.payload)
+            history.push('/bubbles')
+            dispatch({ type: types.ON_SUBMIT })
+        })
+        .catch(error => {
+            alert(error.response.data)
+        })
 }
 
 export const addColors = colors => {
@@ -45,33 +45,33 @@ export const addColors = colors => {
 
 export const getColors = () => dispatch => {
     axiosWithAuth().get(colorsApiUrl + '/colors')
-    .then(res => {
-        dispatch(addColors(res.data))
-    })
-    .catch(error => {
-        alert(error.response.data)
-    })
+        .then(res => {
+            dispatch(addColors(res.data))
+        })
+        .catch(error => {
+            alert(error.response.data)
+        })
 }
 
 export const updateColors = color => dispatch => {
     axiosWithAuth().put(colorsApiUrl + '/colors/' + color.id, color)
-    .then(res => {
-        dispatch(getColors(res.data))
-    })
-    .catch(error => {
-        alert(error.message)
-    })   
+        .then(res => {
+            dispatch(getColors(res.data))
+        })
+        .catch(error => {
+            alert(error.message)
+        })
 }
 
-export const removeColor = (color,setEditing) => dispatch => {
+export const removeColor = (color, setEditing) => dispatch => {
     axiosWithAuth().delete(colorsApiUrl + '/colors/' + color.id, color)
-    .then(res => {
-        setEditing(false)
-        dispatch(getColors(res.data))
-    })
-    .catch(error => {
-        alert(error.message)
-    })
+        .then(res => {
+            setEditing(false)
+            dispatch(getColors(res.data))
+        })
+        .catch(error => {
+            alert(error.message)
+        })
 }
 
 export const postColor = color => dispatch => {
@@ -82,12 +82,12 @@ export const postColor = color => dispatch => {
         }
     }
     axiosWithAuth().post(colorsApiUrl + '/colors', params)
-    .then(res => {
-        dispatch(getColors(res.data))
-        dispatch({type: types.ON_SUBMIT})
-    })
-    .catch(error => {
-        alert(error.message)
-        dispatch({type: types.ON_SUBMIT})
-    })
+        .then(res => {
+            dispatch(getColors(res.data))
+            dispatch({ type: types.ON_SUBMIT })
+        })
+        .catch(error => {
+            alert(error.message)
+            dispatch({ type: types.ON_SUBMIT })
+        })
 }

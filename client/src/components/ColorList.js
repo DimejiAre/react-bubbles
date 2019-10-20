@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import * as actionCreators from '../state/actionCreators'
 import ColorForm from './ColorForm';
 import './scss/ColorForm.scss';
@@ -11,7 +11,6 @@ const initialColor = {
 };
 
 const ColorList = ({ colors, removeColor, updateColors }) => {
-  // console.log(colors);
   const [editing, setEditing] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
 
@@ -24,14 +23,10 @@ const ColorList = ({ colors, removeColor, updateColors }) => {
     e.preventDefault();
     updateColors(colorToEdit)
     setEditing(false)
-    // Make a put request to save your updated color
-    // think about where will you get the id from...
-    // where is is saved right now?
   };
 
   const deleteColor = color => {
-    removeColor(color,setEditing)
-    // make a delete request to delete this color
+    removeColor(color, setEditing)
   };
 
   return (
@@ -85,8 +80,6 @@ const ColorList = ({ colors, removeColor, updateColors }) => {
         </form>
       )}
       <div className="spacer" />
-      {/* stretch - build another form here to add a color */}
-      
     </div>
   );
 };
